@@ -10,4 +10,9 @@ export class EventService {
   getEvents(): Promise<Event[]> {   
     return Promise.resolve(DUMMY_DATA_EVENTS);
   }
+
+  getEventById(id: number): Promise<Event> {
+    return this.getEvents()
+      .then(result => result.find(event => event.EventId === id));
+  }
 }
