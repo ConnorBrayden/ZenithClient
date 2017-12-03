@@ -1,0 +1,33 @@
+<div class="jumbotron mdl-card mdl-shadow--2dp" style="width: auto; border-style:solid;">
+  <h1>Zenith Society</h1><br />
+  <p class="lead mdl-color-text--grey" style="font-style: italic;">
+      The Zenity Society is a family-oriented non-for-profit organization that holds events
+      during the week. Check out our upcoming events below!
+  </p>
+</div>
+
+<div class="jumbotron mdl-card mdl-shadow--2dp" style="width: auto; border-style:solid;">
+  <h1>Events This Week</h1><br />
+  <table *ngIf="events" border="1">
+    <thead>
+      <tr>
+        <td>Time</td>
+        <td>Event Id</td>
+        <td>Event Description</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let e of events; let i=index;" (click)="onSelect(e)" [class.selected]="e === selected">
+          <a [routerLink]="['/detail', e.EventId]">
+            <td>{{e.FromDate | date:'h:mma'}} - {{e.ToDate | date:'h:mma'}}</td>
+          </a>
+          <td>{{e.eventId}}</td>
+          <td>
+            <div *ngFor='let a of activityCategories; let j=index'>
+                <a [routerLink]="['/detail', e.EventId]" *ngIf='e.ActivityCategoryId == a.ActivityCategoryId'>{{a.ActivityDescription}}</a>
+            </div>
+          </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
