@@ -12,6 +12,7 @@
     <thead>
       <tr>
         <td>Time</td>
+        <td>Event Id</td>
         <td>Event Description</td>
       </tr>
     </thead>
@@ -20,6 +21,7 @@
           <a [routerLink]="['/detail', e.EventId]">
             <td>{{e.FromDate | date:'h:mma'}} - {{e.ToDate | date:'h:mma'}}</td>
           </a>
+          <td>{{e.eventId}}</td>
           <td>
             <div *ngFor='let a of activityCategories; let j=index'>
                 <a [routerLink]="['/detail', e.EventId]" *ngIf='e.ActivityCategoryId == a.ActivityCategoryId'>{{a.ActivityDescription}}</a>

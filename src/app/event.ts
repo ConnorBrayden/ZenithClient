@@ -11,12 +11,12 @@ export class Event {
     //CreationDate
     //IsActive
     //EventId
-    EventId: number;
-    FromDate: Date;
-    ToDate: Date;
-    EnteredByUsername: string;
-    ActivityCategoryId: number;
-    ActivityCategory: ActivityCategory;
-    CreationDate: Date;
-    IsActive: boolean;
+    eventId: number;
+    fromDate: Date;
+    toDate: Date;
+    enteredByUsername: string;
+    activityCategoryId: number;
+    activityCategory: ActivityCategory;
+    creationDate: Date;
+    isActive: boolean;
 }

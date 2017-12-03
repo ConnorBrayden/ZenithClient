@@ -16,8 +16,6 @@ import {ActivityCategoryService} from '../activity-category.service'
 
 export class EventComponent implements OnInit {
   title = 'Zenith Society';
-  //events = DUMMY_DATA_EVENTS;
-  //activityCategories = DUMMY_DATA_ACTIVITY_CATEGORIES;
   events: Event[]
   activityCategories: ActivityCategory[]
 

@@ -32,6 +32,11 @@ export class EventDetailComponent implements OnInit {
     this.location.back();
   }
 
+  save(): void {
+    this.eventService.update(this.event)
+      .then(() => this.goBack());
+  }
+
   @Input()
   event: Event;
 

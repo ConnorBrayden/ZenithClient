@@ -1,6 +1,5 @@
-
 export class ActivityCategory {
-    ActivityCategoryId: number;
-    ActivityDescription: string;
-    CreationDate: Date;
+    activityCategoryId: number;
+    activityDescription: string;
+    creationDate: Date;
 }

@@ -19,7 +19,7 @@ export class DashboardComponent implements OnInit {
     this.eventService.getEvents()
       .then(results => this.events = results);
 
-      this.activityCategoryService.getActivityCategories()
-      .then(results => this.activityCategories = results);
+    this.activityCategoryService.getActivityCategories()
+    .then(results => this.activityCategories = results);
   }
 }
