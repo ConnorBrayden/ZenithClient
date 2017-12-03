@@ -1,0 +1,14 @@
+<div *ngIf="event">
+    <p>Event ID: {{event.EventId}}</p>
+    <p>From Date: {{ event.FromDate}}</p>
+    <p>To Date: {{ event.ToDate}}</p>
+    <p>Entered By Username: {{ event.EnteredByUsername}}</p>
+    <p>Activity Category Id: {{ event.ActivityCategoryId}}</p>
+    <div *ngFor='let a of activityCategories; let j=index'>
+        <div *ngIf='event.ActivityCategoryId == a.ActivityCategoryId'>
+          <p>{{a.ActivityDescription}}</p>
+        </div>
+    </div>
+    <p>Creation Date: {{ event.CreationDate}}</p>
+    <p>Is Active: {{ event.IsActive}}</p>  
+  </div>

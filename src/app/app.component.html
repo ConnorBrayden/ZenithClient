@@ -38,7 +38,9 @@
   </table>
 </div>
 
-<div *ngIf="selected">
+<app-event-detail [event]="selected"></app-event-detail>
+
+<!-- <div *ngIf="selected">
   <p>Event ID: {{selected.EventId}}</p>
   <p>From Date: {{ selected.FromDate}}</p>
   <p>To Date: {{ selected.ToDate}}</p>
@@ -51,5 +53,5 @@
   </div>
   <p>Creation Date: {{ selected.CreationDate}}</p>
   <p>Is Active: {{ selected.IsActive}}</p>  
-</div>
+</div> -->
 
