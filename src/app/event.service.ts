@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {DUMMY_DATA_EVENTS} from './data/dummy-data';
+//import {DUMMY_DATA_EVENTS} from './data/dummy-data';
 import {Event} from './event'
 import { Headers, Http, Response } from '@angular/http';
 import 'rxjs/add/operator/toPromise';

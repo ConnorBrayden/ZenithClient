@@ -1,3 +1,20 @@
-<p>
-  activity-category works!
-</p>
+<div class="jumbotron mdl-card mdl-shadow--2dp" style="width: auto; border-style:solid;">
+  <h1>Activity Categories</h1><br />
+  <table *ngIf="activityCategories" border="1">
+    <thead>
+      <tr>
+        <td>Activity Category Id</td>
+        <td>Activity Description</td>
+        <td>Creation Date</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let a of activityCategories; let i=index;" (click)="onSelect(a)" [class.selected]="a === selected">
+        <td>{{a.activityCategoryId}}</td>
+        <td>{{a.activityDescription}}</td>
+        <td>{{a.creationDate | date:'MM/dd/yyyy h:mma'}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
