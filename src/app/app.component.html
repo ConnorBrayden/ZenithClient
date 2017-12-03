@@ -8,7 +8,7 @@
   }
 </style>
 
-<div class="jumbotron mdl-card mdl-shadow--2dp" style="width: auto">
+<div class="jumbotron mdl-card mdl-shadow--2dp" style="width: auto; border-style:solid;">
   <h1>Zenith Society</h1><br />
   <p class="lead mdl-color-text--grey" style="font-style: italic;">
       The Zenity Society is a family-oriented non-for-profit organization that holds events
@@ -16,25 +16,25 @@
   </p>
 </div>
 
-<div class="jumbotron mdl-card mdl-shadow--2dp" style="width: auto;">
+<div class="jumbotron mdl-card mdl-shadow--2dp" style="width: auto; border-style:solid;">
   <h1>Events This Week</h1><br />
-  <table class="events-table mdl-data-table mdl-js-data-table  mdl-shadow--2dp">
+  <table *ngIf="events" border="1">
     <thead>
       <tr>
         <td>Time</td>
-        <td>Event</td>
+        <td>Event Description</td>
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td>{{event.FromDate}} - {{event.ToDate}}</td>
-        <td>{{activityCategory.ActivityDescription}}</td>
+      <tr *ngFor="let e of events; let i=index; ">
+        <td>{{e.FromDate | date:'h:mma'}} - {{e.ToDate | date:'h:mma'}}</td>
+        <td>{{e.ActivityCategoryId}}</td>
       </tr>
     </tbody>
   </table>
 
 
-<div>
+<!-- <div>
   <p>Event ID: {{event.EventId}}</p>
   <p>From Date: {{ event.FromDate}}</p>
   <p>To Date: {{ event.ToDate}}</p>
@@ -42,5 +42,5 @@
   <p>Activity Category Id: {{ event.ActivityCategoryId}}</p>
   <p>Creation Date: {{ event.CreationDate}}</p>
   <p>Is Active: {{ event.IsActive}}</p>  
-</div>
+</div> -->
 
