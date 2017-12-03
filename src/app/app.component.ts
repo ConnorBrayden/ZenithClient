@@ -1,24 +1,47 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {Event} from './event';
 import {ActivityCategory} from './activity-category'
-import {DUMMY_DATA_EVENTS, DUMMY_DATA_ACTIVITY_CATEGORIES} from './data/dummy-data'; 
+import { EventService } from './event.service';
+import { ActivityCategoryService } from './activity-category.service';
+
+
+
+//import {DUMMY_DATA_EVENTS, DUMMY_DATA_ACTIVITY_CATEGORIES} from './data/dummy-data'; 
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
+  providers: [EventService, ActivityCategoryService]
 })
 
-export class AppComponent {
-  title = 'app';
-  events = DUMMY_DATA_EVENTS;
-  activityCategories = DUMMY_DATA_ACTIVITY_CATEGORIES;
+export class AppComponent implements OnInit {
+  title = 'Zenith Society';
+  //events = DUMMY_DATA_EVENTS;
+  //activityCategories = DUMMY_DATA_ACTIVITY_CATEGORIES;
+  events: Event[]
+  activityCategories: ActivityCategory[]
 
   selected: Event;
 
   onSelect(event: Event): void {
     this.selected= event;
-}
+  }
+
+  constructor(private eventService: EventService, private activityCategoryService: ActivityCategoryService) { } 
+  
+  getEvents(): void {
+    this.events = this.eventService.getEvents();
+  }
+
+  getActivityCategories(): void {
+    this.activityCategories = this.activityCategoryService.getActivityCategories();
+  }
+
+  ngOnInit(): void {
+    this.getEvents();
+    this.getActivityCategories();
+  }
 
   // event: Event = {
   //   EventId: 1,
