@@ -26,21 +26,30 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let e of events; let i=index; ">
+      <tr *ngFor="let e of events; let i=index;" (click)="onSelect(e)" [class.selected]="e === selected">
         <td>{{e.FromDate | date:'h:mma'}} - {{e.ToDate | date:'h:mma'}}</td>
-        <td>{{e.ActivityCategoryId}}</td>
+        <td>
+          <div *ngFor='let a of activityCategories; let j=index'>
+              <div *ngIf='e.ActivityCategoryId == a.ActivityCategoryId'>{{a.ActivityDescription}}</div>
+          </div>
+        </td>
       </tr>
     </tbody>
   </table>
+</div>
 
-
-<!-- <div>
-  <p>Event ID: {{event.EventId}}</p>
-  <p>From Date: {{ event.FromDate}}</p>
-  <p>To Date: {{ event.ToDate}}</p>
-  <p>Entered By Username: {{ event.EnteredByUsername}}</p>
-  <p>Activity Category Id: {{ event.ActivityCategoryId}}</p>
-  <p>Creation Date: {{ event.CreationDate}}</p>
-  <p>Is Active: {{ event.IsActive}}</p>  
-</div> -->
+<div *ngIf="selected">
+  <p>Event ID: {{selected.EventId}}</p>
+  <p>From Date: {{ selected.FromDate}}</p>
+  <p>To Date: {{ selected.ToDate}}</p>
+  <p>Entered By Username: {{ selected.EnteredByUsername}}</p>
+  <p>Activity Category Id: {{ selected.ActivityCategoryId}}</p>
+  <div *ngFor='let a of activityCategories; let j=index'>
+      <div *ngIf='selected.ActivityCategoryId == a.ActivityCategoryId'>
+        <p>{{a.ActivityDescription}}</p>
+      </div>
+  </div>
+  <p>Creation Date: {{ selected.CreationDate}}</p>
+  <p>Is Active: {{ selected.IsActive}}</p>  
+</div>
 
