@@ -7,9 +7,7 @@ export class ActivityCategoryService {
 
   constructor() { }
 
-
-  getActivityCategories(): ActivityCategory[] {   
-    return DUMMY_DATA_ACTIVITY_CATEGORIES;
+  getActivityCategories(): Promise<ActivityCategory[]> {   
+    return Promise.resolve(DUMMY_DATA_ACTIVITY_CATEGORIES);
   }
-
 }

@@ -7,8 +7,7 @@ export class EventService {
 
   constructor() { }
 
-  getEvents(): Event[] {   
-    return DUMMY_DATA_EVENTS;
+  getEvents(): Promise<Event[]> {   
+    return Promise.resolve(DUMMY_DATA_EVENTS);
   }
-
 }

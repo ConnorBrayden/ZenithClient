@@ -31,12 +31,16 @@ export class AppComponent implements OnInit {
   constructor(private eventService: EventService, private activityCategoryService: ActivityCategoryService) { } 
   
   getEvents(): void {
-    this.events = this.eventService.getEvents();
+    this.eventService.getEvents()
+    .then(events => this.events = events);
   }
 
   getActivityCategories(): void {
-    this.activityCategories = this.activityCategoryService.getActivityCategories();
+    this.activityCategoryService.getActivityCategories()
+    .then(activityCategories => this.activityCategories = activityCategories);
   }
+
+
 
   ngOnInit(): void {
     this.getEvents();
