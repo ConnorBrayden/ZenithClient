@@ -11,7 +11,8 @@ const routes: Routes = [
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
   { path: 'dashboard',  component: DashboardComponent, pathMatch: 'full' },
   { path: 'detail/:id', component: EventDetailComponent, pathMatch: 'full' },
-  { path: 'events',     component: EventComponent }
+  { path: 'events',     component: EventComponent, pathMatch: 'full' },
+  { path: 'activityCategories',     component: ActivityCategoryComponent, pathMatch: 'full' }
 ];
 @NgModule({
   imports: [ RouterModule.forRoot(routes) ],

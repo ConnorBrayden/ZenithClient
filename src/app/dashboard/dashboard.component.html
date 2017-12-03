@@ -17,14 +17,14 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let e of events; let i=index;" (click)="onSelect(e)" [class.selected]="e === selected">
+      <tr *ngFor="let e of events; let i=index;"  [class.selected]="e === selected">
           <a [routerLink]="['/detail', e.EventId]">
-            <td>{{e.FromDate | date:'h:mma'}} - {{e.ToDate | date:'h:mma'}}</td>
+            <td>{{e.fromDate | date:'h:mma'}} - {{e.toDate | date:'h:mma'}}</td>
           </a>
           <td>{{e.eventId}}</td>
           <td>
             <div *ngFor='let a of activityCategories; let j=index'>
-                <a [routerLink]="['/detail', e.EventId]" *ngIf='e.ActivityCategoryId == a.ActivityCategoryId'>{{a.ActivityDescription}}</a>
+                <a [routerLink]="['/detail', e.eventId]" *ngIf='e.activityCategoryId == a.activityCategoryId'>{{a.activityDescription}}</a>
             </div>
           </td>
       </tr>

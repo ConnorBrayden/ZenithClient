@@ -21,18 +21,26 @@
     <table *ngIf="events" border="1">
       <thead>
         <tr>
-          <td>Time</td>
-          <td>Event Description</td>
+          <td>Activity Description</td>
+          <td>Starts</td>
+          <td>Ends</td>
+          <td>Created By User</td>
+          <td>Creation Date</td>
+          <td>Is Active</td>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let e of events; let i=index;" (click)="onSelect(e)" [class.selected]="e === selected">
-          <td>{{e.FromDate | date:'h:mma'}} - {{e.ToDate | date:'h:mma'}}</td>
           <td>
             <div *ngFor='let a of activityCategories; let j=index'>
                 <div *ngIf='e.ActivityCategoryId == a.ActivityCategoryId'>{{a.ActivityDescription}}</div>
             </div>
           </td>
+          <td>{{e.fromDate | date:'MM/dd/yyyy h:mma'}}</td>
+          <td>{{e.toDate | date:'MM/dd/yyyy h:mma'}}</td>
+          <td>{{e.enteredByUsername}}</td>
+          <td>{{e.creationDate | date:'MM/dd/yyyy h:mma'}}</td>
+          <td>{{e.isActive}}</td>
         </tr>
       </tbody>
     </table>
