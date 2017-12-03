@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {Event} from '../event';
-import {ActivityCategory} from '../activity-category'
-import { EventService } from '../event.service';
-import { ActivityCategoryService } from '../activity-category.service';
+import {EventService} from '../event.service';
+import {ActivityCategory} from '../activity-category';
+import {ActivityCategoryService} from '../activity-category.service'
 
 
 
