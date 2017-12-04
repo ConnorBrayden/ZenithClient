@@ -8,12 +8,37 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class EventService {
 
+
   constructor(private http: Http) { }
 
   private BASE_URL = "http://localhost:10473/api/Events"
 
+  getMonday(d) {
+    d = new Date(d);
+    var day = d.getDay(),
+        diff = d.getDate() - day + (day == 0 ? -6:1); // adjust when day is sunday
+    return new Date(d.setDate(diff));
+  }
+
+  formatDate(date) {
+    var d = new Date(date),
+        month = '' + (d.getMonth() + 1),
+        day = '' + d.getDate(),
+        year = d.getFullYear();
+
+    if (month.length < 2) month = '0' + month;
+    if (day.length < 2) day = '0' + day;
+
+    return [year, month, day].join('-');
+}
+  
+
   getEvents(): Promise<Event[]> {
-    return this.http.get(this.BASE_URL)
+    var startDate = this.getMonday(new Date()); 
+    var dateString = this.formatDate(startDate);
+    console.log(this.BASE_URL + "?startDate=" + dateString);
+    
+    return this.http.get(this.BASE_URL + "?&startDate=" + dateString)
      .toPromise()
      .then(response => response.json() as Event[])
      .catch(this.handleError);
