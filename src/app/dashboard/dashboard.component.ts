@@ -17,12 +17,14 @@ export class DashboardComponent implements OnInit {
   events: Event[];
   activityCategories: ActivityCategory[];
   startDate: Date;
+  dates: string[];
 
   constructor(private eventService: EventService, private activityCategoryService: ActivityCategoryService) { } 
 
   ngOnInit() {
     this.startDate = this.getMonday(new Date()); 
     var dateString = this.formatDate(this.startDate);
+    //this.getDatesOfWeek(this.startDate);
     
     this.eventService.getEvents(dateString)
       .then(results => this.events = results);
@@ -50,6 +52,25 @@ export class DashboardComponent implements OnInit {
 
     return [year, month, day].join('-');
 }
+
+  // getDatesOfWeek(monday: Date) {
+  //   var dateStrings: string[];
+  //   var length = 7;
+
+  //   for(var i = 0; i < length; i++) {
+  //     var tempDate = new Date(monday);
+  //     var day = tempDate.getDay();
+  //     var diff = tempDate.getDate() - day + i;
+
+  //     var d = new Date(tempDate.setDate(diff));
+
+
+  //     dateStrings.push(d.toDateString()); 
+  //     console.log(tempDate.toDateString());
+  //   }
+  //   //this.dates.fill(monday.toString(), monday.getDate()+7);
+  //   console.log(this.dates);
+  // }
 
   previousWeek() {
     this.startDate.setDate(this.startDate.getDate() - 7); 

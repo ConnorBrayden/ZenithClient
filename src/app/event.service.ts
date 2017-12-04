@@ -11,7 +11,7 @@ export class EventService {
 
   constructor(private http: Http) { }
 
-  private BASE_URL = "http://localhost:10473/api/Events"
+  private BASE_URL = "http://connorbraydenzenithsociety2.azurewebsites.net/api/Events"
 
   getMonday(d) {
     d = new Date(d);
