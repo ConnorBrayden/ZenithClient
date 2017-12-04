@@ -1,68 +1,38 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<style>
-    .events-table th {
-        background-color: #E8EAF6;
-    }
-    .jumbotron {
-        background: white;
-    }
-  </style>
-  
-  <div class="jumbotron mdl-card mdl-shadow--2dp" style="width: auto; border-style:solid;">
-    <h1>Zenith Society</h1><br />
-    <p class="lead mdl-color-text--grey" style="font-style: italic;">
-        The Zenity Society is a family-oriented non-for-profit organization that holds events
-        during the week. Check out our upcoming events below!
-    </p>
-  </div>
-  
-  <div class="jumbotron mdl-card mdl-shadow--2dp" style="width: auto; border-style:solid;">
-    <h1>Events This Week</h1><br />
-    <table *ngIf="events" border="1">
-      <thead>
-        <tr>
-          <td>Activity Description</td>
-          <td>Starts</td>
-          <td>Ends</td>
-          <td>Created By User</td>
-          <td>Creation Date</td>
-          <td>Is Active</td>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let e of events; let i=index;" (click)="onSelect(e)" [class.selected]="e === selected">
-          <td>
-            <div *ngFor='let a of activityCategories; let j=index'>
-                <div *ngIf='e.ActivityCategoryId == a.ActivityCategoryId'>{{a.ActivityDescription}}</div>
-            </div>
-          </td>
-          <td>{{e.fromDate | date:'MM/dd/yyyy h:mma'}}</td>
-          <td>{{e.toDate | date:'MM/dd/yyyy h:mma'}}</td>
-          <td>{{e.enteredByUsername}}</td>
-          <td>{{e.creationDate | date:'MM/dd/yyyy h:mma'}}</td>
-          <td>{{e.isActive}}</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+<div class="jumbotron mdl-card mdl-shadow--2dp" style="width: auto; border-style:solid;">
+  <h1>Zenith Society</h1><br />
+  <p class="lead mdl-color-text--grey" style="font-style: italic;">
+      The Zenity Society is a family-oriented non-for-profit organization that holds events
+      during the week. Check out our upcoming events below!
+  </p>
+</div>
 
-  
-  <!--  
-  <app-event-detail [event]="selected"></app-event-detail>
-  
- <div *ngIf="selected">
-    <p>Event ID: {{selected.EventId}}</p>
-    <p>From Date: {{ selected.FromDate}}</p>
-    <p>To Date: {{ selected.ToDate}}</p>
-    <p>Entered By Username: {{ selected.EnteredByUsername}}</p>
-    <p>Activity Category Id: {{ selected.ActivityCategoryId}}</p>
-    <div *ngFor='let a of activityCategories; let j=index'>
-        <div *ngIf='selected.ActivityCategoryId == a.ActivityCategoryId'>
-          <p>{{a.ActivityDescription}}</p>
-        </div>
-    </div>
-    <p>Creation Date: {{ selected.CreationDate}}</p>
-    <p>Is Active: {{ selected.IsActive}}</p>  
-  </div> -->
-  
+<div class="jumbotron mdl-card mdl-shadow--2dp" style="width: auto; border-style:solid;">
+  <h1>All Events</h1><br />
+  <table *ngIf="events" border="1">
+    <thead>
+      <tr>
+        <td>Activity Description</td>
+        <td>Starts</td>
+        <td>Ends</td>
+        <td>Created By User</td>
+        <td>Creation Date</td>
+        <td>Is Active</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let e of events; let i=index;" (click)="onSelect(e)" [class.selected]="e === selected">
+        <td>
+          <div *ngFor='let a of activityCategories; let j=index'>
+              <div *ngIf='e.activityCategoryId == a.activityCategoryId'>{{a.activityDescription}}</div>
+          </div>
+        </td>
+        <td>{{e.fromDate | date:'MM/dd/yyyy h:mma'}}</td>
+        <td>{{e.toDate | date:'MM/dd/yyyy h:mma'}}</td>
+        <td>{{e.enteredByUsername}}</td>
+        <td>{{e.creationDate | date:'MM/dd/yyyy h:mma'}}</td>
+        <td>{{e.isActive}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
   

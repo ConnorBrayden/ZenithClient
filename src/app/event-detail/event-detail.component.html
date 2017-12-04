@@ -1,26 +1,15 @@
 <div *ngIf="event">
-    <p>Event ID: {{event.EventId}}</p>
-    <p>From Date: {{ event.FromDate}}</p>
-    <p>To Date: {{ event.ToDate}}</p>
-    <p>Entered By Username: {{ event.EnteredByUsername}}</p>
-    <p>Activity Category Id: {{ event.ActivityCategoryId}}</p>
+    <p>Event ID: {{event.eventId}}</p>
+    <p>From Date: {{ event.fromDate}}</p>
+    <p>To Date: {{ event.toDate}}</p>
+    <p>Entered By Username: {{ event.enteredByUsername}}</p>
+    <p>Activity Category Id: {{ event.activityCategoryId}}</p>
     <div *ngFor='let a of activityCategories; let j=index'>
-        <div *ngIf='event.ActivityCategoryId == a.ActivityCategoryId'>
-          <p>{{a.ActivityDescription}}</p>
+        <div *ngIf='event.activityCategoryId == a.activityCategoryId'>
+          <p>{{a.activityDescription}}</p>
         </div>
     </div>
-    <p>Creation Date: {{ event.CreationDate}}</p>
-    <p>Is Active: {{ event.IsActive}}</p>  
-    
-    <!-- <div>
-      <p><label>Event ID: </label><input [(ngModel)]="event.EventId" placeholder="EventId"></p>
-      <p><label>From Date: </label><input [(ngModel)]="event.FromDate" placeholder="FromDate"></p>
-      <p><label>To Date: </label><input [(ngModel)]="event.ToDate" placeholder="Occupation"></p>
-      <p><label>Entered By Username: </label><input [(ngModel)]="event.EnteredByUsername" placeholder="EnteredByUsername"></p>
-      <p><label>Activity Category Id: </label><input [(ngModel)]="event.ActivityCategoryId" placeholder="ActivityCategoryId"></p>
-      <p><label>Creation Date: </label><input [(ngModel)]="event.CreationDate" placeholder="CreationDate"></p>
-      <p><label>Is Active: </label><input [(ngModel)]="event.IsActive" placeholder=""true or false""></p>
-    </div> -->
+    <p>Creation Date: {{ event.creationDate}}</p>
+    <p>Is Active: {{ event.isActive}}</p>  
     <button (click)="goBack()">Back</button>
-    &nbsp;&nbsp;&nbsp;&nbsp;<button (click)="save()">Save</button> 
 </div>
