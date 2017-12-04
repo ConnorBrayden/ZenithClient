@@ -12,10 +12,6 @@ export class ActivityCategoryService {
 
   constructor(private http: Http) { }
 
-  // getActivityCategories(): ActivityCategory[] {   
-  //   return DUMMY_DATA_ACTIVITY_CATEGORIES;
-  // }
-
   getActivityCategories(): Promise<ActivityCategory[]> { 
     return this.http.get(this.BASE_URL)
      .toPromise()

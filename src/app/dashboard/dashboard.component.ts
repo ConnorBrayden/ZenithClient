@@ -15,11 +15,21 @@ export class DashboardComponent implements OnInit {
   activityCategories: ActivityCategory[];
 
   constructor(private eventService: EventService, private activityCategoryService: ActivityCategoryService) { } 
+
   ngOnInit() {
     this.eventService.getEvents()
       .then(results => this.events = results);
 
     this.activityCategoryService.getActivityCategories()
     .then(results => this.activityCategories = results);
+
+  }
+
+  previousWeek() {
+
+  }
+
+  nextWeek() {
+    
   }
 }
