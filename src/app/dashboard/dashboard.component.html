@@ -16,14 +16,49 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let e of events; let i=index;"  [class.selected]="e === selected">
-          <td>{{e.fromDate | date:'h:mma'}} - {{e.toDate | date:'h:mma'}}</td>
-          <td>
-            <div *ngFor='let a of activityCategories; let j=index'>
+
+
+    <ng-container *ngFor="let dow of [0,1,2,3,4,5,6]; let i=index, let date_displayed;">
+
+      <!--day {{ dow }}-->
+
+      <ng-container *ngIf="{ displayed: false } as date_meta">
+
+
+        <!--<span ng-init="date_displayed = false"></span>-->
+
+        <ng-container *ngFor="let e of events; let i=index;">
+
+          <tr *ngIf="getZenithDayOfWeek(e.fromDate) == dow && (i == 0 ||  getZenithDayOfWeek(e.fromDate) != getZenithDayOfWeek(events[i-1].fromDate))">
+            <th colspan="3" style="text-align: center; background: lightblue; padding-top: 10px" >
+              {{ e.fromDate | date: 'EEEE, MMMM d, yyyy' }}
+
+              <div *ngIf="{ displayed: true } as date_meta"></div>
+
+              <!--@Html.ValueFor(modelItem => item.FromDate, “{0:D}“)-->
+              <!--@*@Html.Raw(item.FromDate.DayOfWeek + ” ” + item.FromDate.Month + ” ” + item.FromDate.Day + “, ” + @item.FromDate.Year)*@-->
+            </th>
+          </tr>
+
+          <tr   [class.selected]="e === selected" *ngIf="getZenithDayOfWeek(e.fromDate) == dow">
+
+            <td style="padding: 4px">{{e.fromDate | date:'h:mma'}} - {{e.toDate | date:'h:mma'}}</td>
+            <td style="padding: 4px">
+              <div *ngFor='let a of activityCategories; let j=index'>
                 <a [routerLink]="['/detail', e.eventId]" *ngIf='e.activityCategoryId == a.activityCategoryId'>{{a.activityDescription}}</a>
-            </div>
-          </td>
-      </tr>
+              </div>
+            </td>
+          </tr>
+        </ng-container>
+
+      </ng-container>
+
+
+    </ng-container>
+
+    <!--<tr *ngFor="let i = 0; i < 7; i++;" ></tr>-->
+
+
     </tbody>
   </table>
   <button (click)="previousWeek()"> < </button>

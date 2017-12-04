@@ -19,13 +19,13 @@ export class DashboardComponent implements OnInit {
   startDate: Date;
   dates: string[];
 
-  constructor(private eventService: EventService, private activityCategoryService: ActivityCategoryService) { } 
+  constructor(private eventService: EventService, private activityCategoryService: ActivityCategoryService) { }
 
   ngOnInit() {
-    this.startDate = this.getMonday(new Date()); 
+    this.startDate = this.getMonday(new Date());
     var dateString = this.formatDate(this.startDate);
     //this.getDatesOfWeek(this.startDate);
-    
+
     this.eventService.getEvents(dateString)
       .then(results => this.events = results);
 
@@ -53,6 +53,11 @@ export class DashboardComponent implements OnInit {
     return [year, month, day].join('-');
 }
 
+  getZenithDayOfWeek(date) {
+    const day = new Date(date);
+    return (day.getDay() - 1) % 7;
+  }
+
   // getDatesOfWeek(monday: Date) {
   //   var dateStrings: string[];
   //   var length = 7;
@@ -65,7 +70,7 @@ export class DashboardComponent implements OnInit {
   //     var d = new Date(tempDate.setDate(diff));
 
 
-  //     dateStrings.push(d.toDateString()); 
+  //     dateStrings.push(d.toDateString());
   //     console.log(tempDate.toDateString());
   //   }
   //   //this.dates.fill(monday.toString(), monday.getDate()+7);
@@ -73,7 +78,7 @@ export class DashboardComponent implements OnInit {
   // }
 
   previousWeek() {
-    this.startDate.setDate(this.startDate.getDate() - 7); 
+    this.startDate.setDate(this.startDate.getDate() - 7);
     var dateString = this.formatDate(this.startDate);
     this.eventService.getEvents(dateString)
     .then(results => this.events = results);
@@ -81,7 +86,7 @@ export class DashboardComponent implements OnInit {
   }
 
   nextWeek() {
-    this.startDate.setDate(this.startDate.getDate() + 7); 
+    this.startDate.setDate(this.startDate.getDate() + 7);
     var dateString = this.formatDate(this.startDate);
     this.eventService.getEvents(dateString)
     .then(results => this.events = results);
