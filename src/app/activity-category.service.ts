@@ -8,7 +8,7 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class ActivityCategoryService {
 
-  private BASE_URL = "http://localhost:10473/api/ActivityCategories"
+  private BASE_URL = "http://connorbraydenzenithsociety2.azurewebsites.net/api/ActivityCategories"
 
   constructor(private http: Http) { }
 
