@@ -28,7 +28,7 @@ export class EventComponent implements OnInit {
   constructor(private eventService: EventService, private activityCategoryService: ActivityCategoryService) { } 
   
   getEvents(): void {
-    this.eventService.getEvents()
+    this.eventService.getEvents("")
     .then(events => this.events = events);
   }
 

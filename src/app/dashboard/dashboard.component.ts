@@ -10,14 +10,21 @@ import {ActivityCategoryService} from '../activity-category.service'
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })
+
+
+
 export class DashboardComponent implements OnInit {
   events: Event[];
   activityCategories: ActivityCategory[];
+  startDate: Date;
 
   constructor(private eventService: EventService, private activityCategoryService: ActivityCategoryService) { } 
 
   ngOnInit() {
-    this.eventService.getEvents()
+    this.startDate = this.getMonday(new Date()); 
+    var dateString = this.formatDate(this.startDate);
+    
+    this.eventService.getEvents(dateString)
       .then(results => this.events = results);
 
     this.activityCategoryService.getActivityCategories()
@@ -25,11 +32,37 @@ export class DashboardComponent implements OnInit {
 
   }
 
+  getMonday(d) {
+    d = new Date(d);
+    var day = d.getDay(),
+        diff = d.getDate() - day + (day == 0 ? -6:1); // adjust when day is sunday
+    return new Date(d.setDate(diff));
+  }
+
+  formatDate(date) {
+    var d = new Date(date),
+        month = '' + (d.getMonth() + 1),
+        day = '' + d.getDate(),
+        year = d.getFullYear();
+
+    if (month.length < 2) month = '0' + month;
+    if (day.length < 2) day = '0' + day;
+
+    return [year, month, day].join('-');
+}
+
   previousWeek() {
+    this.startDate.setDate(this.startDate.getDate() - 7); 
+    var dateString = this.formatDate(this.startDate);
+    this.eventService.getEvents(dateString)
+    .then(results => this.events = results);
 
   }
 
   nextWeek() {
-    
+    this.startDate.setDate(this.startDate.getDate() + 7); 
+    var dateString = this.formatDate(this.startDate);
+    this.eventService.getEvents(dateString)
+    .then(results => this.events = results);
   }
 }

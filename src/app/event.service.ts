@@ -33,9 +33,7 @@ export class EventService {
 }
   
 
-  getEvents(): Promise<Event[]> {
-    var startDate = this.getMonday(new Date()); 
-    var dateString = this.formatDate(startDate);
+  getEvents(dateString): Promise<Event[]> {
     console.log(this.BASE_URL + "?startDate=" + dateString);
     
     return this.http.get(this.BASE_URL + "?&startDate=" + dateString)
@@ -45,7 +43,7 @@ export class EventService {
   }
 
   getEventById(id: number): Promise<Event> {
-    return this.getEvents()
+    return this.getEvents("")
       .then(result => result.find(event => event.eventId === id));
   }
 
