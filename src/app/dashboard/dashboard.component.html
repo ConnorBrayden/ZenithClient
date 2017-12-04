@@ -17,9 +17,7 @@
     </thead>
     <tbody>
       <tr *ngFor="let e of events; let i=index;"  [class.selected]="e === selected">
-          <a [routerLink]="['/detail', e.EventId]">
-            <td>{{e.fromDate | date:'h:mma'}} - {{e.toDate | date:'h:mma'}}</td>
-          </a>
+          <td>{{e.fromDate | date:'h:mma'}} - {{e.toDate | date:'h:mma'}}</td>
           <td>
             <div *ngFor='let a of activityCategories; let j=index'>
                 <a [routerLink]="['/detail', e.eventId]" *ngIf='e.activityCategoryId == a.activityCategoryId'>{{a.activityDescription}}</a>
